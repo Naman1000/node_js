@@ -1,0 +1,78 @@
+1) npm init -y  
+    this creates an empty nodejs project
+    and creates package.json to contain the configurations of our project
+
+    Q-> difference between package-lock and package.json
+    Q-> what is the use of package.json
+    Q-> how can you write custom dev and build scripts for your server
+
+    Environments -> 
+            Development Env -> we can log things, debugging, error handling
+                                our API keys, secret tokens, connection URIs are accessible 
+            E-Commerce API -> Secret Keys, connection strings, salt key  
+            
+            Build Env -> Only functionality and features are used
+            we dont need WHOLE NODE_MODULES, onl those features that are being used, are imported into our projects
+
+2) written custom scripts 
+3) Integrating express.js for routing
+        -> install express.js  -> npm install express
+        -> import express in our endpoint file -> const express = require('express');
+        -> we create an instance of express->  const app = express();
+
+
+        EXPRESS.JS -> javascript package, that is used for building backend projects    
+                        -> Routing 
+                        -> Methods - defines the purpose of our api calls 
+                            GET     - fetch something from the server
+                            POST    - send something to the server and to the database
+                            PUT     - sending small 
+                            DELETE  - deletes
+                            PATCH   - updates
+                        -> amazon.com/products
+                            -> if we want to fetch the list of products     - GET
+                            -> add some products to the database            - POST
+                            -> delete the products                          - DELETE
+
+
+
+4) we define routes
+    app.method("path", (req, res)=>{
+        handling logic for that request
+        req-> extracts data sent from the client
+        res-> sends the data to the client
+    })
+
+5) we add the port listener
+    app.listen(port_number, ()=>{
+        console.log("Server is up on the port_number")
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Javascript is an object based language 
+
+data, array, string, object, functions 
+
+function name(input){
+
+    logic
+}
+
+name(input)
+
+
+()=>{
+
+}
