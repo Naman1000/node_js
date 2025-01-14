@@ -1,0 +1,115 @@
+
+MVC  MODEL, VIEW, Controller
+
+MODEL: Managing the data and DB interactions
+VIEW: managing the routes that are accessible by the client
+CONTROLLERS: handler functions, specify the security measure, error handling, asynchronous implementation
+
+Is a backend system design architecture that we use to make sure our endpoint files
+are not overcrowded
+
+this might lead to high RAM and CPU usage, which might cost us more server costs
+
+In order to prevent this, we use MVC, that only calls the code
+that is required to respond to a particular request in our server
+
+
+
+
+
+
+Routing
+
+routes, handler functions
+10 routes
+user
+signup
+loging
+profile
+update password
+users/:id
+
+
+Middleware
+
+Authentication
+Logging Middleware
+
+Controller
+
+    Handler Functions for each route
+
+
+    Express router
+
+        used for cross file routing in nodejs projects
+
+
+
+
+
+SQL DATABASES are RELATIONAL DATABASES where information is stored in form of
+TABLES
+
+These are Rigid Databases meaning that once created you can not change the fields
+of the database
+
+Sql databases are very very fast and secure but are not modular
+
+Their implementation is very complex
+
+
+Example Banks
+    A lot of people are querying their database at once
+    very very fast
+    it works on RBI guidelines 
+
+
+NoSQL Databases, i.e non relational databases which are stored in form of
+
+MongoDB
+Javascript Objects
+
+modular- you can also change the fields 
+secure
+implementation is easy
+not very complex
+
+
+Example Startup
+
+    secure
+    fast (is not as fast as sql)
+    scalable 
+    stored in form of js objects
+    more support 
+    nested Data
+
+
+    const product = {
+        name:"Toothpaste"
+        cost:100,
+        reviews:[
+            {name: Elon, review: Best toothpaste},
+            { name: Joe, review: Minty}
+        ]
+    }
+
+
+HW: install MongoDB along with MongoDBCompass
+
+
+
+JavaScript Mock (Mid Course) / JavaScript Practice Mock (Mid Course) :
+
+One/two DSA Questions - Related to a Javascript/DSA and projects.
+One Coding Question - Related to coding and making changes in the code.
+Five Theory Questions with Follow-Ups.
+There will be questions about DOM manipulation and core concepts of JS also.
+
+MERN Stack Mock (Full Course): (After completing this (Node Js) module students can take this mock)
+
+One Coding Question - Related to a React Frontend where you have to make a functional UI.
+One Coding Question - Related to Node backend where you have to make 2 to 3 APIs.
+Five Theory Questions with Follow-Ups.
+Resume and project check.

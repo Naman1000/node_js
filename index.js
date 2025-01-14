@@ -3,7 +3,8 @@ import express from "express";
 //imported the expressjs module as dependancy
 const app = express(); //this is instance of express.js
 //this initialises express.js in order to be used for different functionalities
-
+import router from "./routes/routes.js";
+import loggingMW from "./middleware/log.middleware.js";
 //this is for parsing json files from the requests
 app.use(express.json());
 
@@ -11,55 +12,27 @@ app.use(express.json());
 // app.use(urlencoded({extended:true}));
 // amazon.com/products?name:John&age=20
 
+// app.use("/meet", meet);
+// app.use("/watch", watch);
 
-//Logging middleware
-app.use((req, res, next)=>{
-    const time = new Date().toTimeString();
-    console.log("Time: ", time, "Method:", req.method, ",Path:\"", req.path, "\"");
-    // once the mw is executed successfully the next function is called which lets the request to move to the next function
-    next();
-})
-// app.method("path", handlerfunction);
+app.use(loggingMW);
 
-// amazon.com/
-//root route
 app.get("/", (req, res)=>{
     //object.property
     // req.body.property="John"; request is the data that is sent FROM THE CLIENT TO THE SERVER
     // res.send("Hello World"); response is the data that is sent FROM THE SERVER TO THE CLIENT
     res.send("Hello World");
 });
-//dynamic routing
-//Route Parameters
-app.get("/meet/:id", (req, res)=>{
-    const id = req.params.id;
-    res.send(`Hello ${id}`);
-});
 
-//Query Parameters
-//those parameters that we write after the ? in the url 
-//these are used for querying the data from the server
-app.get("/watch", (req, res)=>{
-    //query with the value v
-    const v = req.query.v;
+app.use("/", router);
+// this is the router code
+// app.method("path", handlerfunction);
 
-    //search the databse for the video with the id v
-
-    //send the video to the client
-    res.send(`Watching video ${v}`);
-})
-
-app.post("/", (req, res)=>{
-    console.log(req.body);
-    res.send("Data Recieved");
-})
-
-app.get("/about", (req, res)=>{
-    res.send("This is the about page");
-})
+// amazon.com/
+//root route
 
 //PORT LISTENER -> 
 const port = 8000;
 app.listen(port, ()=>{
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running very nicely ${port}`);
 })

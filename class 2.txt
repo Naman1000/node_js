@@ -1,0 +1,63 @@
+
+
+Express.JS
+
+Routing
+Handlers
+Treat the client request as objects
+Response as objects as well
+
+Middleware 
+    -built in -> parsing json, extracting query parameters, error handling
+    - custom -> logging ->  monitoring 
+
+Middleware is a function that is ALWAYS called before any route is handled 
+    - Protected Data -> Authentication ->JWT
+    - Logging
+
+    app.use((req, res, next)=>{
+    const time = new Date().getTime();
+    console.log("Time: ", time, "Method: ", req.method, "Path: ", req.path);
+    next();
+    })
+
+
+    - Parsing json files
+        app.use(express.json());
+    -for urlencoding  built in middlewares 
+        app.use(urlencoded({extended:true}));
+        // amazon.com/products?name:John&age=20
+
+Dynamic Routing
+
+
+Error Handling 
+
+
+
+NOTE!!!!!
+THE BROWSERS CAN ONLY SEND GET REQUESTS
+
+
+
+
+
+
+
+
+
+Javascript is an object based language 
+
+data, array, string, object, functions 
+
+function name(input){
+
+    logic
+}
+
+name(input)
+
+
+()=>{
+
+}
