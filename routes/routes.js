@@ -41,3 +41,5 @@ router.get("/watch", (req, res)=>{
 // export default meet;
 // or
 export default router    //ES6 syntax
+// or
+// module.exports = router; //CommonJS syntax

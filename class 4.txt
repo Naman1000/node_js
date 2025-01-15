@@ -1,0 +1,234 @@
+MONGO DB
+
+Database or Cluster:
+physical container for storing collections 
+
+using some physical servers provided by mongo 
+
+Collections:
+the group of mongodb documents or groups of data of a particular category 
+that we can use for one or more projects
+
+
+Document:
+The data for single entity
+
+Why do we mongodb- 
+-implementation is very simple
+-schemaless
+A product->  name category inventory
+B product -> name category inventory reviews
+
+AccioJob
+    initial -> Student - name, contact, qualification, address
+    after 1 year
+    later-> student - name, contact, qual, address, resume, test scores 
+
+Evolving with changing needs
+
+-Great query support for nodejs projects and monitoring 
+
+                    |--------Backend---------|
+Front End         server                DB
+JS Objects        mongoose              js objects  
+
+- automatic sharding
+
+Database grows into very very large clusters 
+
+Sharding means breaking large DB into smaller chunks so that there is 
+- no latency 
+-high efficiency
+- better management of data
+
+
+-rich queries 
+-efficient
+-professional support
+
+
+-mongo db automatically provided an ID to the document that we have entered
+
+
+
+MongoDB Setup steps
+
+1. install mongo db along with MongoDBCompass
+2. open mongodbcompass and connect to the local database (localhost:27017)
+3. either explore the collections or we can use mongoshell to interact with the databases
+
+Queries for mongoShell
+
+1. show dbs -> lists all the databases along with their sizes
+2. use <db_name> -> switches to the db that we want to use or to create a new db
+Note: until and unless we add atleast one document in the database it would stay
+temporary meaning it would be automatically deleted by mongo
+3. db.createCollection("collection_name")- creating a db collection
+4. db.collection_name.drop() -> deletes the collection
+
+
+CRUD Operations for documents or single entities
+
+Create 
+1. db.collection.insertOne()  -> inserts a single object and it takes an object as arg
+2. db.collection.insertMany() -> inserts an ARRAY of objects 
+
+Query:
+db.userdata.insertOne({
+name:"Elon",
+age:50,
+email:"eln@tesla.com",
+role:"user"
+})
+
+Mongo Response:
+{
+  acknowledged: true,
+  insertedId: ObjectId('6787d9c143edfbd1bf217c07')
+}
+
+Query 2:
+db.userdata.insertOne({
+name:"yoyo",
+age:40,
+email:"yoyo@yoyo.com",
+role:'user',
+_id:93969648964
+})
+
+Response:
+{
+  acknowledged: true,
+  insertedId: 93969648964
+}
+
+
+Query 3:
+db.userdata.insertMany([{
+name:"yoyo",
+age:40,
+email:"yoyo@yoyo.com",
+role:'user',
+_id:939696343548964
+},{
+
+name:"oigdo",
+age:409,
+email:"ydfcophoyo@yoyo.com",
+role:'user',
+_id:93969689548964
+}])
+
+Response:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 939696343548964,
+    '1': 93969689548964
+  }
+}
+
+
+
+Query 4 Nested Data:
+db.userdata.insertOne({
+name:"narayan",
+age:55,
+Address:{
+City:"Bangalore",
+State:"Karnatka",
+Pincode:10373907
+},
+contact:98672963,
+rating :0
+})
+Response:
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('6787e34a98c1626590467319')
+}
+
+Data Types
+
+strings
+integers
+ARRAY
+date
+object
+boolean
+null
+date 
+timestamp
+binary
+code
+object ID
+min and max
+
+
+
+Read
+
+{
+  _id: ObjectId('6787e56b98c162659046731a'),
+  name: 'sudha',
+  age: 53,
+  Address: {
+    City: 'Bangalore',
+    State: 'Karnatka',
+    Pincode: 10373907
+  },
+  contact: 986724963,
+  rating: 0
+}
+
+
+-db.collection.find()- return all the data that exists on the db
+-db.userdata.find().pretty() - return data in a well formatted way
+
+-db.collection.find({name:"narayan"})- returns all the values with the desired query
+-db.collection.findOne({query:value})- return one value
+-db.userdata.find({"Address.Pincode":10373907}) - to find nested values
+
+
+Conditions and Operations
+-equality condition -db.collection.find({query:value})
+-db.collection.find({<key>:{$eq:<value>}})
+-db.collection.find({<key>:{$lt:<value>}}) -> less than
+-db.collection.find({<key>:{$gt:<value>}}) -> greater than
+-db.collection.find({<key>:{$lte:<value>}}) -> less than or equal to
+-db.collection.find({<key>:{$gte:<value>}}) -> greater than or equal to
+-db.collection.find({<key>:{$ne:<value>}}) -> greater than or equal to
+
+
+db.userdata.find({age:{$lt:50}})   -> value = {$lt:50}
+
+
+Update 
+
+
+
+Delete
+
+
+
+We always have to MODEL it i.e. we need to have some fixed schema
+- it prevents conflict
+  user management system - name, age, email, address, role, contact
+
+
+
+
+
+
+
+
+USER MANAGEMENT API PROJECT
+
+HW: create a nodejs project
+    basics
+    signup route
+    login route
+    get users
+
+    

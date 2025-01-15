@@ -18,7 +18,7 @@ that is required to respond to a particular request in our server
 
 
 
-Routing
+Routes
 
 routes, handler functions
 10 routes
@@ -45,8 +45,9 @@ Controller
         used for cross file routing in nodejs projects
 
 
+Databases
 
-
+SQL Databases
 
 SQL DATABASES are RELATIONAL DATABASES where information is stored in form of
 TABLES
@@ -64,11 +65,12 @@ Example Banks
     very very fast
     it works on RBI guidelines 
 
+NoSql DB
 
 NoSQL Databases, i.e non relational databases which are stored in form of
+Javascript Objects
 
 MongoDB
-Javascript Objects
 
 modular- you can also change the fields 
 secure
