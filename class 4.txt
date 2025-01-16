@@ -10,6 +10,15 @@ the group of mongodb documents or groups of data of a particular category
 that we can use for one or more projects
 
 
+Database =Blinkit (Quick Commerce Product)/zepto/swiggy
+
+Collections = 
+products
+customer service history records 
+users data
+stores database 
+
+
 Document:
 The data for single entity
 
@@ -70,8 +79,8 @@ temporary meaning it would be automatically deleted by mongo
 CRUD Operations for documents or single entities
 
 Create 
-1. db.collection.insertOne()  -> inserts a single object and it takes an object as arg
-2. db.collection.insertMany() -> inserts an ARRAY of objects 
+1. db.collection.insertOne({})  -> inserts a single object and it takes an object as arg
+2. db.collection.insertMany([{},{}]) -> inserts an ARRAY of objects 
 
 Query:
 db.userdata.insertOne({
@@ -96,11 +105,16 @@ role:'user',
 _id:93969648964
 })
 
+
 Response:
 {
   acknowledged: true,
   insertedId: 93969648964
 }
+
+_id : its the unique identification for each document in your db
+Note: the id should always be unique
+
 
 
 Query 3:
@@ -154,7 +168,6 @@ Data Types
 strings
 integers
 ARRAY
-date
 object
 boolean
 null
@@ -167,7 +180,7 @@ min and max
 
 
 
-Read
+Read  (Querying) 
 
 {
   _id: ObjectId('6787e56b98c162659046731a'),
@@ -203,24 +216,110 @@ Conditions and Operations
 
 db.userdata.find({age:{$lt:50}})   -> value = {$lt:50}
 
+name = narayan, yoyo, sudha 
+in array  
+db.userdata.find({name:{$in:["narayan", "yoyo", "sudha"]}})
+
+db.data.find({city:{$in:["delhi", "gurgaon", "noida"]}})  = in array
+db.data.find({city:{$nin:["delhi", "gurgaon", "noida"]}})  = not in array
+
+name = yoyo and age = 45
+
+AND / &&
+db.userdata.find({$and:[{name:"yoyo"}, {age:45}]})
+
+OR / || 
+db.userdata.find({$or:[{name:"yoyo"}, {age:45}]})
+
+
 
 Update 
 
+update()
+db.collection.update(querying condition, updated value)
+
+Example
+db.userdata.updateOne({name:"johnny"}, {$set:{email:"johnny@gmail.com"}})
+db.userdata.replaceOne({name:"johnny"}, {email:"johnny@gmail.com"})
+
+
+Upsert - if the condition that you enetered doesnot match and your query contains 
+enough data, so mongo automatically creates a new document and adds the updated value that you gave it
+
+
+
+Update - the update would only target the value that you want to change
+Replacing - the replace would update the whole document with only those values you have enetered
+replace deletes all the values except for _id, and adds the value that we have given it in that command
+
+save() has been depracted and "replace" is the new function now 
+
+
+Before: {
+  _id: ObjectId('6787e56b98c162659046731a'),
+  name: 'sudha',
+  age: 53,
+  Address: {
+    City: 'Bangalore',
+    State: 'Karnatka',
+    Pincode: 10373907
+  },
+  contact: 986724963,
+  rating: 0
+}
+
+
+Command : db.userdata.updateOne({name:"sudha"}, {$set:{age:54}})
+
+After: {
+  _id: ObjectId('6787e56b98c162659046731a'),
+  name: 'sudha',
+  age: 54,
+  Address: {
+    City: 'Bangalore',
+    State: 'Karnatka',
+    Pincode: 10373907
+  },
+  contact: 986724963,
+  rating: 0
+}
+
+
+Note: Only the AGE was changed using updateOne
+
+
+Replace
+
+
+Before:
+
+{
+  _id: 1,
+  name: 'yoyo',
+  email: 'yoyo@yoyo.com'
+}
+
+Command : db.userdata.replaceOne({name:"yoyo"}, {name:"yoyo2"})
+
+
+After: 
+{
+  _id: 1,
+  name: 'yoyo2'
+}
 
 
 Delete
+
+db.userdata.deleteOne({name:"johhny"})
+db.userdata.deleteMany({name:"yoyo"})
+
 
 
 
 We always have to MODEL it i.e. we need to have some fixed schema
 - it prevents conflict
   user management system - name, age, email, address, role, contact
-
-
-
-
-
-
 
 
 USER MANAGEMENT API PROJECT
