@@ -6,7 +6,7 @@ Interviewer: avg prices categorised based on their type
 
 db.orders.aggregate([
   {
-	$group:{_id:"$name",
+	$project:{_id:"$name",
 	orderquantity:{$sum:"$quantity"},
 	averagePrice:{$avg:"$price"},
    
